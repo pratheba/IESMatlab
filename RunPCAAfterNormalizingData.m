@@ -1,9 +1,9 @@
-function [adjpcadata, mn, sd, pc, scores, latent, tsquare] = RunPCAAfterNormalizingData(pcadata)
-    mn = mean(pcadata);
-    sd = std(pcadata);
-    sd(sd==0) = 0.001;
+function [adjpcadata, originalmean, originalstddev, pc, scores, latent] = RunPCAAfterNormalizingData(pcadata)
+    originalmean = mean(pcadata);
+    originalstddev = std(pcadata);
+    originalstddev(originalstddev==0) = 0.001;
 
-    adjpcadata = bsxfun(@minus,pcadata,mn);
-    adjpcadata = bsxfun(@rdivide,adjpcadata,sd);
-    [pc, scores, latent, tsquare] = pca(adjpcadata);
+    adjpcadata = bsxfun(@minus,pcadata,originalmean);
+    adjpcadata = bsxfun(@rdivide,adjpcadata,originalstddev);
+    [pc, scores, latent] = pca(adjpcadata);
 end
