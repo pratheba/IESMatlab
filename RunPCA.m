@@ -10,16 +10,13 @@ function [PC1, PC2] = RunPCA(fileslist)
 		
 		filename = strcat(name, '.dat');
 		disp(filename);
-		out=textread(ileslist{index}, '%s', 'whitespace',',');
-		pcaData = out(:,2:end);
-		iesNameData = out(:,1);
 
-
-		filename = csvread(fileslist{index});
-		[pc, scores, latent, tsquare] = pca(filename(:,2:end));
-		iesnames = filename(:,1);
-		PlotPCA(name, pc, scores, latent, tsquare, iesnames);
-		SavePCA( name, pc, scores, latent);
+		[pcaname pcadata] = ExtractDataForPCA(fileslist{index});
+        
+		%filename = csvread(fileslist{index});
+		[pc, scores, latent, tsquare] = pca(pcadata);
+		PlotPCA(name, pc, scores, latent, tsquare, pcaname);
+		%SavePCA( name, pc, scores, latent);
 	end
 
 end

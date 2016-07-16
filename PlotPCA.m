@@ -9,13 +9,17 @@ function [] = PlotPCA(filename, pc, scores, latent, tsquare, iesnames)
 	[rows cols] = size(scores);
 	if(cols < 2)
 		return;
-	end
+    end
+    
+    [row col] = size(iesnames);
+    
 	figure();
 	plot(scores(:,1),scores(:,2), '+');
+    gname(iesnames);
 	xlabel('1st principal component');
 	ylabel('2nd principal component');
 	title(filename);
-    gname(iesnames);
+    
 
 	[pcrows pccols] = size(pc);
 	if((pccols < 3) || (cols < 3))
