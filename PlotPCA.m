@@ -37,10 +37,10 @@ function [] = PlotPCA(filename, pc, scores, latent, tsquare, iesnames)
 	%categories = cellfun(@num2str,num2cell(1:rows),'uni',false)
 	categories = strsplit(num2str(1:rows));
 
-	figure();
-	biplot(pc(:,1:3),'scores',scores(:,1:3));%,'varlabels',categories');
-	title(filename);
+	%figure();
+	%biplot(pc(:,1:3),'scores',scores(:,1:3));%,'varlabels',categories');
+	%title(filename);
 
-	axis([-.26 0.8 -.51 .51 -.61 .81]);
-	view([30 40]);
+	%axis([-.26 0.8 -.51 .51 -.61 .81]);
+	%view([30 40]);
 end

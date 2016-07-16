@@ -9,13 +9,15 @@ function [] = SavePCA( filename, pc, scores, latent)
 		fprintf(fid , '%s\r\n', 'Principal Components');
 		fclose(fid);
   	end             
-
-	dlmwrite( outputfilename, pc, '-append', 'delimiter', ',', 'roffset', 1);
-	fid = fopen(outputfilename, 'a');
+  	transpc = pc';
+	dlmwrite( outputfilename, transpc, '-append', 'delimiter', ',', 'roffset', 1);
+	
+    fid = fopen(outputfilename, 'a');
 	if fid ~= -1
 		fprintf(fid, '\n%s\r\n', 'Scores');
 		fclose(fid);
-  	end 
+    end 
+    transscores = scores';
 	dlmwrite( outputfilename, scores, '-append', 'delimiter', ',', 'roffset', 1);
 
 	fid = fopen(outputfilename, 'a');
