@@ -1,4 +1,4 @@
-function [] = PlotPCA(filename, pc, scores, latent, tsquare, iesnames)
+function [v] = PlotPCA(filename, pc, scores, latent, iesnames)
 	%disp('pc start');
 	%disp(pc);
 	%disp('pc done');
@@ -11,20 +11,21 @@ function [] = PlotPCA(filename, pc, scores, latent, tsquare, iesnames)
 		return;
     end
     
-    [row col] = size(iesnames);
+    %[row col] = size(iesnames);
     
 	figure();
 	plot(scores(:,1),scores(:,2), '+');
-    gname(iesnames);
-	xlabel('1st principal component');
-	ylabel('2nd principal component');
-	title(filename);
+    v = gname(iesnames);    
+ 	xlabel('1st principal component');
+ 	ylabel('2nd principal component');
+ 	title(filename);
+   
+%    hs = get(v.text,'String')
     
-
-	[pcrows pccols] = size(pc);
-	if((pccols < 3) || (cols < 3))
-		return;
-	end
+% 	[pcrows pccols] = size(pc);
+% 	if((pccols < 3) || (cols < 3))
+% 		return;
+% 	end
 
 	%categories = 1:rows;
 	%categories = categories;
@@ -35,12 +36,12 @@ function [] = PlotPCA(filename, pc, scores, latent, tsquare, iesnames)
 
 	%cellstr(num2str(categories));
 	%categories = cellfun(@num2str,num2cell(1:rows),'uni',false)
-	categories = strsplit(num2str(1:rows));
+	%categories = strsplit(num2str(1:rows));
 
-	%figure();
-	%biplot(pc(:,1:3),'scores',scores(:,1:3));%,'varlabels',categories');
-	%title(filename);
-
-	%axis([-.26 0.8 -.51 .51 -.61 .81]);
-	%view([30 40]);
+% 	figure();
+% 	biplot(pc(:,1:3),'scores',scores(:,1:3));%,'varlabels',categories');
+% 	title(filename);
+% 
+% 	axis([-.26 0.8 -.51 .51 -.61 .81]);
+% 	view([30 40]);
 end

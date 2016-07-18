@@ -1,4 +1,4 @@
-function [PC1, PC2] = RunPCA(fileslist)
+function [] = RunPCA(fileslist)
 
 	numoffiles  = length(fileslist);
 	for index = 1:numoffiles
@@ -15,10 +15,11 @@ function [PC1, PC2] = RunPCA(fileslist)
         [adjpcadata, originalmean, originalstddev, pc, scores, latent] = RunPCAAfterNormalizingData(pcadata);
         
         reconstructedData = ReconstructData(originalmean, originalstddev, pc, scores, latent);
-        
+        SaveRecontructedData(name, pcaname, reconstructedData);
         PlotData(pcadata, adjpcadata, reconstructedData);
-        PlotPCA(name, adjpcadata, scores, latent, tsquare, pcaname);
-		SavePCA( name, pc, scores, latent);
+        PlotPCA(name, adjpcadata, scores, latent, pcaname);
+%         disp(v);
+ 		SavePCA( name, pc, scores, latent);
    
     end
 end

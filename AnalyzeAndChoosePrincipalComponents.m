@@ -1,6 +1,6 @@
 function numberOfPCs = AnalyzeAndChoosePrincipalComponents(latent)
 
-     numberOfPCs = 0;
+    numberOfPCs = 0;
     normalizedlatent = (latent - min(latent)) / ( max(latent) - min(latent) )
     
     [row col] = size(latent);
