@@ -15,8 +15,8 @@ function [] = RunPCA(fileslist)
         [adjpcadata, originalmean, originalstddev, pc, scores, latent] = RunPCAAfterNormalizingData(pcadata);
         
         reconstructedData = ReconstructData(originalmean, originalstddev, pc, scores, latent);
-        SaveRecontructedData(name, pcaname, reconstructedData);
-        PlotData(pcadata, adjpcadata, reconstructedData);
+        %SaveRecontructedData(name, pcaname, reconstructedData);
+        PlotData(pcaname, pcadata, adjpcadata, reconstructedData);
         PlotPCA(name, adjpcadata, scores, latent, pcaname);
 %         disp(v);
  		SavePCA( name, pc, scores, latent);

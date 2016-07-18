@@ -6,7 +6,7 @@ function numberOfPCs = AnalyzeAndChoosePrincipalComponents(latent)
     [row col] = size(latent);
     for i = 1: row
         disp(normalizedlatent(i));
-        if (normalizedlatent(i) < 0.5)
+        if (normalizedlatent(i) < 0.1)
             numberOfPCs = i-1;
             break;
         end
