@@ -5,5 +5,5 @@ function [adjpcadata, originalmean, originalstddev, pc, scores, latent] = RunPCA
 
     adjpcadata = bsxfun(@minus,pcadata,originalmean);
     adjpcadata = bsxfun(@rdivide,adjpcadata,originalstddev);
-    [pc, scores, latent] = pca(adjpcadata);
+    [pc,scores, latent] = pca(adjpcadata);
 end

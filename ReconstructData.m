@@ -1,4 +1,4 @@
-function [modifiedData] = ReconstructData(originalmean, originalstddev, PCA,score, latent)
+function [modifiedData, numberOfPrincipalComponents] = ReconstructData(originalmean, originalstddev, PCA,score, latent)
 
     numberOfPrincipalComponents = AnalyzeAndChoosePrincipalComponents(latent);
     modifiedData = [];
