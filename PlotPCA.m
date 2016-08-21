@@ -1,4 +1,4 @@
-function [v] = PlotPCA(filename, pc, scores, latent, iesnames)
+function [v] = PlotPCA(filename, pc, scores, latent, iesnames,numberOfPrincipalComponents)
 	%disp('pc start');
 	%disp(pc);
 	%disp('pc done');
@@ -14,11 +14,21 @@ function [v] = PlotPCA(filename, pc, scores, latent, iesnames)
     %[row col] = size(iesnames);
     
 	figure();
-	plot(scores(:,1),scores(:,2), '+');
-    v = gname(iesnames);    
- 	xlabel('1st principal component');
- 	ylabel('2nd principal component');
- 	title(filename);
+    set(gcf,'numbertitle','off','name',filename) % See the help for GCF
+    index=1;
+    for i=1:numberOfPrincipalComponents
+        for j= 1:numberOfPrincipalComponents
+            subplot(numberOfPrincipalComponents,numberOfPrincipalComponents,index);
+            
+            plot(scores(:,i),scores(:,j), '.');
+            %v = gname(iesnames);    
+
+            xlabel(strcat(num2str(i),' PC'));
+            ylabel(strcat(num2str(j),' PC'));
+            index = index+1;
+        end
+    end
+   
    
 %    hs = get(v.text,'String')
     
